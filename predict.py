@@ -4,7 +4,7 @@ import os, glob, random
 from sklearn.naive_bayes import GaussianNB
 import datetime
 # from fpdf import FPDF
-# import pdfkit
+import pdfkit
 
 
 def split_test(x,y):
@@ -67,8 +67,9 @@ def predict():
                     # print("--------")
 
     x = np.array(x, dtype=np.float)
-    print(len(y))
-
+    # print(len(y))
+    st_y = list(set(y))
+    print(st_y)
     test, answer = split_test(x, y)
 
     gnb = GaussianNB()
@@ -77,8 +78,8 @@ def predict():
 
     return test, y_pred
 
-# data, prediction = predict()
-# print(prediction)
+data, prediction = predict()
+print(prediction)
 
 # def to_pdf(result, data):
 #     output = pyPdf.PdfFileWriter()
@@ -132,10 +133,15 @@ def pass_data(data):
 
     return y_pred
 
-
+array=[  6., 24.,  22. , 12. , 24.]
+arr = []
+for i in range(2):
+    arr.append(array)
+r=pass_data(arr)
+print(r)
 def pdf_print(html_url):
     t = str(datetime.date)
     pdfkit.from_string('jdakjdkla', 'out.pdf')
 
 
-pdf_print("dsada")
+# pdf_print("dsada")
